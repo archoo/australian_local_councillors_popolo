@@ -16,10 +16,11 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   csv_to_popolo!
   rake
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

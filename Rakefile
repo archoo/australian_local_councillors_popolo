@@ -17,7 +17,8 @@ def update_data(state, url)
 
   Tempfile.open("councillor_csv") do |file|
     puts "Fetching #{state.to_s.upcase} CSV: #{url}"
-    file << open(url).read
+    rawdata = open(url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read
+    file << rawdata.gsub(/\r\n?/, "\n") 
 
     json = JSON.pretty_generate(Popolo::CSV.new(file).data)
     puts "Saving: #{json_filename}"
